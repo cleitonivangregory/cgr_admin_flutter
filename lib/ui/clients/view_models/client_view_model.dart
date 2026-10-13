@@ -3,9 +3,12 @@ import 'package:cgr_admin_flutter/domain/models/client.dart';
 import 'package:cgr_core_flutter/cgr_core_flutter.dart';
 
 class ClientViewModel extends CGRFormViewModel<Client> {
-  new() : super(repository: ClientsRepository());
+  new({this.item})
+    : nameController = TextEditingController(text: item?.name),
+      super(repository: ClientsRepository());
 
-  final nameController = TextEditingController();
+  final Client? item;
+  late final TextEditingController nameController;
 
   @override
   void dispose() {
@@ -14,7 +17,10 @@ class ClientViewModel extends CGRFormViewModel<Client> {
   }
 
   @override
+  bool get isEdit => item?.id != '';
+
+  @override
   Client prepareItem() {
-    return Client(name: nameController.text);
+    return Client(id: item?.id, name: nameController.text);
   }
 }

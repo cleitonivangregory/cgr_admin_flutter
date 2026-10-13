@@ -1,3 +1,4 @@
+import 'package:cgr_admin_flutter/domain/models/client.dart';
 import 'package:cgr_admin_flutter/routing/routes.dart';
 import 'package:cgr_admin_flutter/ui/clients/widgets/client_screen.dart';
 import 'package:cgr_admin_flutter/ui/clients/widgets/clients_screen.dart';
@@ -40,6 +41,13 @@ GoRouter get routerConfig {
         path: AppRoutes.clientNew,
         builder: (context, state) {
           return ClientScreen();
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.clientEdit,
+        builder: (context, state) {
+          final item = state.extra as Client;
+          return ClientScreen(item: item);
         },
       ),
     ],

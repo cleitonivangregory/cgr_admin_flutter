@@ -37,9 +37,11 @@ class ClientsService extends CGRService<Client> {
   }
 
   @override
-  Future<void> put({required Client item}) {
-    // TODO: implement put
-    throw UnimplementedError();
+  Future<void> put({required Client item}) async {
+    final items = await get();
+    final index = items.indexWhere((client) => item.id == client.id);
+    items[index] = item;
+    await _saveAll(items: items);
   }
 
   Future<void> _saveAll({required List<Client> items}) async {

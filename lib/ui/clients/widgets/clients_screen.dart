@@ -25,7 +25,8 @@ class _ClientsScreenState extends State<ClientsScreen> {
           subtitle: Text(item.name),
         );
       },
-      nextScreen: AppRoutes.clientNew,
+      editScreen: AppRoutes.clientEdit,
+      newScreen: AppRoutes.clientNew,
     );
   }
 }
