@@ -14,8 +14,14 @@ GoRouter get routerConfig {
           return CGRSplashScreen(
             acronym: 'CGR',
             appName: 'CGR Admin',
-            nextScreen: AppRoutes.home,
+            nextScreen: AppRoutes.welcome,
           );
+        },
+      ),
+      GoRoute(
+        path: AppRoutes.welcome,
+        builder: (context, state) {
+          return CGRWelcomeScreen(nextScreen: AppRoutes.home);
         },
       ),
       GoRoute(
