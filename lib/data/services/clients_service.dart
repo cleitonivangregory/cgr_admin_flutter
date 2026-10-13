@@ -11,11 +11,7 @@ class ClientsService extends CGRService<Client> {
   Future<void> post({required Client item}) async {
     final items = await get();
     items.add(item);
-
-    final data = jsonEncode(items.map((item) => item.toJson()).toList());
-
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_key, data);
+    await _saveAll(items: items);
   }
 
   @override
@@ -28,18 +24,27 @@ class ClientsService extends CGRService<Client> {
 
     final List<dynamic> items = jsonDecode(data);
 
+    await Future.delayed(Duration(seconds: 2));
+
     return items.map((item) => Client.fromJson(item)).toList();
   }
 
   @override
-  Future<void> delete({required Client item}) {
-    // TODO: implement delete
-    throw UnimplementedError();
+  Future<void> delete({required Client item}) async {
+    final items = await get();
+    items.removeWhere((client) => item.id == client.id);
+    await _saveAll(items: items);
   }
 
   @override
   Future<void> put({required Client item}) {
     // TODO: implement put
     throw UnimplementedError();
+  }
+
+  Future<void> _saveAll({required List<Client> items}) async {
+    final prefs = await SharedPreferences.getInstance();
+    final data = jsonEncode(items.map((item) => item.toJson()).toList());
+    await prefs.setString(_key, data);
   }
 }
