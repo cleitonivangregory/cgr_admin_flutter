@@ -8,13 +8,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: ListTile(
-          leading: Text('CGR'),
-          title: Text('Admin'),
-          subtitle: Text('Painel administrativo'),
-        ),
+      drawer: Drawer(
+        child: Column(mainAxisAlignment: .center, children: [CGRThemeWidget()]),
       ),
+
+      appBar: AppBar(title: Text('CGR Admin')),
       body: GridView.count(
         crossAxisCount: 2,
         crossAxisSpacing: 16,
@@ -27,11 +25,6 @@ class HomeScreen extends StatelessWidget {
             onTap: () => context.push(AppRoutes.clients),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-        },
-        child: Icon(Icons.add),
       ),
     );
   }
