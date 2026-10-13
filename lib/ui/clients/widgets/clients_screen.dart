@@ -17,6 +17,14 @@ class _ClientsScreenState extends State<ClientsScreen> {
     return CGRListScreen(
       title: 'Clientes',
       viewModel: viewModel,
+      itemBuilder: (context, index) {
+        final item = viewModel.items[index];
+        return ListTile(
+          leading: Text('$index'),
+          title: Text(item.name),
+          subtitle: Text(item.name),
+        );
+      },
       nextScreen: AppRoutes.clientNew,
     );
   }
