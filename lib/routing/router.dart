@@ -6,8 +6,18 @@ import 'package:cgr_core_flutter/cgr_core_flutter.dart';
 
 GoRouter get routerConfig {
   return GoRouter(
-    initialLocation: AppRoutes.home,
+    initialLocation: AppRoutes.splash,
     routes: [
+      GoRoute(
+        path: AppRoutes.splash,
+        builder: (context, state) {
+          return CGRSplashScreen(
+            acronym: 'CGR',
+            appName: 'CGR Admin',
+            nextScreen: AppRoutes.home,
+          );
+        },
+      ),
       GoRoute(
         path: AppRoutes.home,
         builder: (context, state) {
