@@ -1,5 +1,4 @@
 import 'package:cgr_admin_flutter/routing/routes.dart';
-import 'package:cgr_admin_flutter/ui/core/ui/scaffold.dart';
 import 'package:cgr_admin_flutter/ui/home/widgets/module_card.dart';
 import 'package:cgr_core_flutter/cgr_core_flutter.dart';
 
@@ -8,9 +7,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
+    return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.amber,
         title: ListTile(
           leading: Text('CGR'),
           title: Text('Admin'),
@@ -29,6 +27,11 @@ class HomeScreen extends StatelessWidget {
             onTap: () => context.push(AppRoutes.clients),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+        },
+        child: Icon(Icons.add),
       ),
     );
   }

@@ -1,7 +1,6 @@
 import 'package:cgr_admin_flutter/routing/routes.dart';
 import 'package:cgr_admin_flutter/ui/clients/view_models/clients_view_model.dart';
 import 'package:cgr_admin_flutter/ui/core/ui/bottom_button.dart';
-import 'package:cgr_admin_flutter/ui/core/ui/scaffold.dart';
 import 'package:cgr_core_flutter/cgr_core_flutter.dart';
 
 class ClientsScreen extends StatefulWidget {
@@ -24,7 +23,7 @@ class _ClientsScreenState extends State<ClientsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
+    return Scaffold(
       appBar: AppBar(title: Text('Clientes')),
       body: ListenableBuilder(
         listenable: viewModel,

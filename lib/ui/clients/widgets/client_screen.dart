@@ -1,6 +1,5 @@
 import 'package:cgr_admin_flutter/ui/clients/view_models/client_view_model.dart';
 import 'package:cgr_admin_flutter/ui/core/ui/bottom_button.dart';
-import 'package:cgr_admin_flutter/ui/core/ui/scaffold.dart';
 import 'package:cgr_core_flutter/cgr_core_flutter.dart';
 
 class ClientScreen extends StatefulWidget {
@@ -22,7 +21,7 @@ class _ClientScreenState extends State<ClientScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
+    return Scaffold(
       appBar: AppBar(title: Text('Novo cliente')),
       body: Form(
         key: _formKey,
